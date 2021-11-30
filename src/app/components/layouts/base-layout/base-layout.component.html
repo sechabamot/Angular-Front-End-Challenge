@@ -1,0 +1,22 @@
+<mat-sidenav-container style="min-height: 100vh;">
+  
+    <mat-sidenav #sidenav [opened]="sideNavService?.open" [mode]="'side'">
+      <mat-nav-list>
+        <div *ngFor="let sideNavitem of sideNavItems">
+          <div *ngFor="let item of sideNavitem.items">
+            <button type="button" mat-button full routerLink="{{item.link}}" [routerLinkActive]="['sidebar-active']">
+                <!-- <span class="name">{{item?.name}}</span> -->
+                <img src="../assets/images/icons/{{item.icon}}" height="30" width="30"  alt="">
+            </button>
+        </div>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+        <!-- <app-loader></app-loader> -->
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

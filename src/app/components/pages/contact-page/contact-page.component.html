@@ -1,0 +1,143 @@
+<div class="position-relative">
+    <div class="row pt-5">
+        <div class="col-3">
+            <div class="d-flex mb-3">
+                <input type="text" class="form-control" [(ngModel)]="searchField"  (input)="filterContacts(searchField)" placeholder="Search">
+                <button class="btn btn-outline-secondary" style="margin-left: 3px;" data-bs-toggle="modal" data-bs-target="#addContactModal" >Add</button>
+            </div>
+            <h3>Contacts</h3>
+            <div class="contacts-list list-group" *ngFor="let contact of contacts">
+                <a (click)="viewContact(contact)" class="list-group-item list-group-item-action bg-transparent border-0 cursor-pointer">
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle p-4" style="background-color: #54a4e1; width: 30px; height: 30px;">
+                            {{contact.firstName[0]}}{{contact.lastName[0]}}
+                        </div>
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">{{contact.firstName}} {{contact.lastName}}</div>
+                            {{contact.cellNumber}}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="display-contact" *ngIf="selectedContact">
+                <div class="card p-4 mb-4 border-0">
+                    <div class="card-body" style="max-width: 500px;">
+                        <h4>{{selectedContact.firstName + " " + selectedContact.lastName}}</h4>
+                        <div class="row">
+                            <div class="col-6 mb-2">
+                                <div class="ms-2 me-auto">
+                                    Cellphone
+                                    <div class="fw-bold">{{selectedContact.cellNumber}}</div>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <div class="ms-2 me-auto">
+                                    Address
+                                    <div class="fw-bold">{{selectedContact.address}}</div>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <div class="ms-2 me-auto">
+                                    Email
+                                    <div class="fw-bold">{{selectedContact.email}}</div>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <div class="ms-2 me-auto">
+                                    Agify
+                                    <div class="fw-bold">{{selectedContactAge}}</div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+                <div class="contact-bio">
+                    <h4 class="fw-bold fw-light mb-2">Bio</h4>
+                    {{selectedContact.bio}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addContactModal" data-backdrop="false" tabindex="-1" >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create new contact</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6 mb-1">
+                    <label for="validationCustom01" class="form-label">First name</label>
+                    <input type="text" [(ngModel)]="firstName.Value" class="form-control" id="validationCustom01" value="Mark" required>
+                    <div class="fs-7 {{firstName.ClassValue}} p-1">
+                      {{firstName.ResponseMessage}}
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-1">
+                    <label for="validationCustom02" class="form-label">Last name</label>
+                    <input type="text" [(ngModel)]="lastName.Value" class="form-control" id="validationCustom02" value="Otto" required>
+                    <div class="fs-7 {{lastName.ClassValue}} p-1">
+                        {{lastName.ResponseMessage}}
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-1">
+                    <label for="validationCustom03" class="form-label">Address</label>
+                    <input type="address" [(ngModel)]="address.Value" class="form-control" id="email" required>
+                    <div class="fs-7 {{address.ClassValue}} p-1">
+                      {{address.ResponseMessage}}
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-1">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" [(ngModel)]="phone.Value" id="phone" required>
+                    <div class="fs-7 {{phone.ClassValue}} p-1">
+                      {{phone.ResponseMessage}}
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <label for="phone" class="form-label">Bio</label>
+                    <textarea class="form-control" [(ngModel)]="bio.Value" name="bio" id="bio" cols="5" rows="5" maxlength="225"></textarea>
+                    <div class="fs-7 {{bio.ClassValue}} p-1">
+                      {{bio.ResponseMessage}}
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" (click)="addNewContact()" class="btn btn-primary">Create</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<!-- <mat-grid-list cols="4">
+    <mat-grid-tile [colspan]="1" style="background-color:lightgrey;">
+        <div style="min-width: 90%;">
+            <mat-grid-list cols="5" rowHeight="1:2">
+                <mat-grid-tile [colspan]="4">
+                    <mat-form-field appearance="outline" style="max-width:200px;">
+                        <mat-label>Search Contacts</mat-label>
+                        <input matInput placeholder="Placeholder"/>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <button mat-flat-button>Basic</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="1">
+                <mat-grid-tile [colspan]="1:2">
+                    Power
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+        Two
+    </mat-grid-tile>
+</mat-grid-list> -->
