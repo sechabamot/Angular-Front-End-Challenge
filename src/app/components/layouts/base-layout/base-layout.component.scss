@@ -1,0 +1,22 @@
+.mat-drawer {  
+  padding: 10px;
+  background: white;
+  .main-router-outlet {
+    padding: 10px !important;
+  }  
+  .sidebar-active {
+    opacity: 1 !important;
+    font-size: px !important;
+    background:lightgrey;
+  }
+
+  button { 
+    margin-top: 10px;
+    width: 100%;
+    padding: .5em;
+    color: black;
+    text-align: center;
+    // opacity: 0.3;
+  }
+
+}

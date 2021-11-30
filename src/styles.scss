@@ -2,3 +2,51 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.position-fixed{
+    position: fixed;
+    top: 0;
+}
+.position-absolute{
+  position: absolute;
+}
+.bg-dark-transparent{
+  background-color: rgba(0,0,0,0.98);
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.fs-7{
+  font-size: 0.8rem !important;
+  }
+.fs-8{
+  font-size: 0.6rem !important;
+}
+.fs-9{
+      font-size: 0.5rem !important;
+}
+.text-deco-none{
+  text-decoration: none !important;
+}
+.text-alert{
+  color: #dc3545;
+}
+.input-disabled{
+  pointer-events: none;
+  background-color: #e9ecef;
+}
+/* Colors */
+.bg-white{
+  background-color: white;
+}
+.bg-lightGray{
+  background-color: #d3d3d3;
+}
+.bg-lightOrange{
+  background-color: #f0efef;
+}
+
+// bootstrap edits
+.modal-backdrop {
+    display: none !important; //Fixes bug    
+}
