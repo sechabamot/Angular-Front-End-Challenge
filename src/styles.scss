@@ -3,6 +3,9 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.h-min-100vh{
+  min-height: 100vh !important;
+}
 .position-fixed{
     position: fixed;
     top: 0;
@@ -23,7 +26,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 0.6rem !important;
 }
 .fs-9{
-      font-size: 0.5rem !important;
+  font-size: 0.5rem !important;
 }
 .text-deco-none{
   text-decoration: none !important;
@@ -36,17 +39,47 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #e9ecef;
 }
 /* Colors */
+.text-gray{
+  color: #b3b2b2;
+}
+.text-darker-gray{
+  color: #838080;
+}
 .bg-white{
-  background-color: white;
+  background-color: white !important;
 }
 .bg-lightGray{
-  background-color: #d3d3d3;
+  background-color: #f0f4f5 !important;
 }
-.bg-lightOrange{
-  background-color: #f0efef;
+.bg-gray{
+  background-color: #e2e2e2 !important;
+}
+.bg-blue{
+  background-color: #54a4e1 !important;
 }
 
 // bootstrap edits
 .modal-backdrop {
     display: none !important; //Fixes bug    
+}
+.list-group-item.active {
+  color: inherit;
+  background-color: #e2e2e2 !important;
+  border-color: #e2e2e2 !important;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #54a4e1;
+  border-color: #54a4e1;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #2670a8;
+  border-color: #175585;
+}
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #2670a8;
+    border-color: #175585;
+    box-shadow: 0 0 0 0.25rem rgb(49 132 253 / 50%);
 }

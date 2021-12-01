@@ -1,60 +1,62 @@
-<div class="position-relative">
-    <div class="row pt-5">
-        <div class="col-3">
-            <div class="d-flex mb-3">
-                <input type="text" class="form-control" [(ngModel)]="searchField"  (input)="filterContacts(searchField)" placeholder="Search">
-                <button class="btn btn-outline-secondary" style="margin-left: 3px;" data-bs-toggle="modal" data-bs-target="#addContactModal" >Add</button>
+<div class="container-fluid">
+    <div class="row pt-5"  style=" min-height: 100vh !important; max-height: 100vh;">
+        <div class="col-3 bg-lightGray p-4 pt-5" >
+            <div class="d-flex mb-5">
+                <input type="text" class="form-control form-control-sm bg-gray border-0" [(ngModel)]="searchField"  (input)="filterContacts(searchField)" placeholder="Search">
+                <button class="btn btn-primary" style="margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#addContactModal" >Add</button>
             </div>
-            <h3>Contacts</h3>
-            <div class="contacts-list list-group" *ngFor="let contact of contacts">
-                <a (click)="viewContact(contact)" class="list-group-item list-group-item-action bg-transparent border-0 cursor-pointer">
-                    <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center justify-content-center rounded-circle p-4" style="background-color: #54a4e1; width: 30px; height: 30px;">
-                            {{contact.firstName[0]}}{{contact.lastName[0]}}
+            <h3 class="text-gray">CONTACTS</h3>
+            <div  style="max-height:300px; overflow-y: scroll;">
+                <div class="contacts-list list-group" *ngFor="let contact of contacts">
+                    <a (click)="viewContact(contact)" id="contact.cellNumber" class="list-group-item list-group-item-action pt-3 mb-1 bg-transparent border-0 cursor-pointer">
+                        <div class="d-flex align-items-center ">
+                            <div class="bg-blue h5 text-white fw-normal d-flex align-items-center justify-content-center rounded-circle p-4" style="background-color: #54a4e1; width: 30px; height: 30px;">
+                                {{contact.firstName[0]}}{{contact.lastName[0]}}
+                            </div>
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold text-darker-gray h6 mb-0">{{contact.firstName}} {{contact.lastName}}</div>
+                                <span class="fs-7">{{contact.cellNumber}}</span>
+                            </div>
                         </div>
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">{{contact.firstName}} {{contact.lastName}}</div>
-                            {{contact.cellNumber}}
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="col-9">
-            <div class="display-contact" *ngIf="selectedContact">
-                <div class="card p-4 mb-4 border-0">
+        <div class="col-9 p-5">
+            <div class="display-contact p-4 pt-0" *ngIf="selectedContact">
+                <div class="card p-4 mb-4 border-0 shadow-sm">
                     <div class="card-body" style="max-width: 500px;">
-                        <h4>{{selectedContact.firstName + " " + selectedContact.lastName}}</h4>
+                        <h1 class="fw-bolder text-darker-gray">{{selectedContact.firstName + " " + selectedContact.lastName}}</h1>
                         <div class="row">
                             <div class="col-6 mb-2">
-                                <div class="ms-2 me-auto">
+                                <div class="ms-2 me-auto text-gray">
                                     Cellphone
-                                    <div class="fw-bold">{{selectedContact.cellNumber}}</div>
+                                    <div class="fw-bold text-darker-gray">{{selectedContact.cellNumber}}</div>
                                 </div>
                             </div>
-                            <div class="col-6 mb-2">
-                                <div class="ms-2 me-auto">
+                            <div class="col-6 mb-2 ">
+                                <div class="ms-2 me-auto text-gray">
                                     Address
-                                    <div class="fw-bold">{{selectedContact.address}}</div>
+                                    <div class="fw-bold text-darker-gray">{{selectedContact.address}}</div>
                                 </div>
                             </div>
                             <div class="col-6 mb-2">
-                                <div class="ms-2 me-auto">
+                                <div class="ms-2 me-auto text-gray">
                                     Email
-                                    <div class="fw-bold">{{selectedContact.email}}</div>
+                                    <div class="fw-bold text-darker-gray">{{selectedContact.email}}</div>
                                 </div>
                             </div>
                             <div class="col-6 mb-2">
-                                <div class="ms-2 me-auto">
+                                <div class="ms-2 me-auto text-gray">
                                     Agify
-                                    <div class="fw-bold">{{selectedContactAge}}</div>
+                                    <div class="fw-bold text-darker-gray">{{selectedContactAge}}</div>
                                 </div>
                             </div>
                         </div>                
                     </div>
                 </div>
                 <div class="contact-bio">
-                    <h4 class="fw-bold fw-light mb-2">Bio</h4>
+                    <h2 class="fw-bolder mb-2 text-darker-gray">Bio</h2>
                     {{selectedContact.bio}}
                 </div>
             </div>
@@ -65,7 +67,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Create new contact</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="row">
@@ -100,7 +102,7 @@
                   <div class="col-md-12">
                     <label for="phone" class="form-label">Bio</label>
                     <textarea class="form-control" [(ngModel)]="bio.Value" name="bio" id="bio" cols="5" rows="5" maxlength="225"></textarea>
-                    <div class="fs-7 {{bio.ClassValue}} p-1">
+                    <div class="fs-7 text-darker-gray {{bio.ClassValue}} p-1">
                       {{bio.ResponseMessage}}
                     </div>
                   </div>

@@ -74,7 +74,7 @@ export class ContactPageComponent implements OnInit {
 
     this.predictAge(contact.firstName);
     this.selectedContact = contact
-
+    this.highlightSelectedContact(contact.cellNumber);
   }
 
   predictAge(name:string){
@@ -109,4 +109,17 @@ export class ContactPageComponent implements OnInit {
     || this.address.IsValid || this.phone.IsValid || this.bio.IsValid 
   }
 
+  highlightSelectedContact(id:string){
+
+    let className = "contact-item"
+    let contactItems = document.getElementsByClassName(className);
+    
+    while(contactItems.length > 0){
+      contactItems[0].classList.remove("active");
+      contactItems = document.getElementsByClassName(className);
+    }
+
+    document.getElementById(id)?.classList.add("active");
+
+  }
 }

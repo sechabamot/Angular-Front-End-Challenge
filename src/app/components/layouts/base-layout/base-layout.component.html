@@ -1,6 +1,6 @@
-<mat-sidenav-container style="min-height: 100vh;">
-  
-    <mat-sidenav #sidenav [opened]="sideNavService?.open" [mode]="'side'">
+<app-toolbar></app-toolbar>
+<mat-sidenav-container class="h-min-100vh bg-white">
+    <mat-sidenav class="pt-5 shadow" #sidenav [opened]="sideNavService?.open" [mode]="'side'">
       <mat-nav-list>
         <div *ngFor="let sideNavitem of sideNavItems">
           <div *ngFor="let item of sideNavitem.items">
@@ -14,9 +14,8 @@
     </mat-sidenav>
   
     <mat-sidenav-content>
-        <!-- <app-loader></app-loader> -->
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
+        <router-outlet>
+
+        </router-outlet>
     </mat-sidenav-content>
-  </mat-sidenav-container>
+</mat-sidenav-container>

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AddContactModalComponent } from './components/shared/add-contact-modal/add-contact-modal.component';
 import { AppModalsComponent } from './components/shared/app-modals/app-modals.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToolbarComponent } from './components/general/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     AboutPageComponent,
     AddContactModalComponent,
     AppModalsComponent,
+    ToolbarComponent,
   ],
   imports: [
     HttpClientModule,
