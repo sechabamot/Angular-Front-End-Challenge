@@ -86,7 +86,9 @@ export class ContactPageComponent implements OnInit {
   }
 
   addNewContact(){
-    if(this.inputAreValid()){
+    let validInput = this.inputAreValid();
+    console.log(validInput); 
+    if(validInput){
       let newContact = {
       
         firstName: this.firstName.Value,
@@ -105,20 +107,18 @@ export class ContactPageComponent implements OnInit {
   }
 
   inputAreValid(){
-    return this.lastName.IsValid || this.firstName.IsValid 
-    || this.address.IsValid || this.phone.IsValid || this.bio.IsValid 
+    return this.lastName.IsValid && this.firstName.IsValid 
+    && this.address.IsValid && this.phone.IsValid && this.bio.IsValid 
   }
 
   highlightSelectedContact(id:string){
 
     let className = "contact-item"
     let contactItems = document.getElementsByClassName(className);
-    
-    while(contactItems.length > 0){
-      contactItems[0].classList.remove("active");
-      contactItems = document.getElementsByClassName(className);
-    }
 
+    if(contactItems.length > 0){
+      contactItems[0].classList.remove("active");  
+    }
     document.getElementById(id)?.classList.add("active");
 
   }
